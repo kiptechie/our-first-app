@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import foods from './food';
+import {choice, remove} from './helpers';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+//randomly draw food from the array
+let junk = choice(foods);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+console.log(`I'd like one ${junk}, please.`);
+
+setTimeout(() => {
+    console.log(`Here you go ${junk}`);
+}, 500);
+
+setTimeout(() => {
+    console.log('Delicious may I have another?');
+}, 1800);
+
+let remaining = remove(foods, junk);
+
+setTimeout(() => {
+    console.log(`I'm sorry, were all out. We have ${remaining.length} other Junks left.`);
+}, 2000);
